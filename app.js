@@ -43,8 +43,12 @@ app.get("/listings/new", (req, res) => {
 app.get("/listings/:id", async (req, res) => {
   let { id } = req.params;
   const listing = await Listing.findById(id);
-  res.render("listings/show.ejs", { listing });
+  if (!listing) {
+    return res.send("Listing not found");
+  }
+  res.render("listings/show", { listing });
 });
+
 
 //Create Route
 app.post("/listings", async (req, res) => {
@@ -66,6 +70,18 @@ app.put("/listings/:id", async (req, res) => {
   await Listing.findByIdAndUpdate(id, { ...req.body.listing });
   res.redirect(`/listings/${id}`);
 });
+
+//delete route
+app.delete("/listings/:id", async (req, res) => {
+  let { id } = req.params;
+  const deletedListing = await Listing.findByIdAndDelete(id);
+  if (!deletedListing) {
+    return res.send("Listing not found or already deleted");
+  }
+  console.log("Deleted listing:", deletedListing._id);
+  res.redirect("/listings");
+});
+
 
 //         location: "Malibu, California",
 //         country: "USA"
