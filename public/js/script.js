@@ -16,3 +16,13 @@
     }, false)
   })
 })()
+
+// Update rating display value in real-time
+const ratingInput = document.getElementById('rating');
+const ratingValue = document.getElementById('ratingValue');
+
+if (ratingInput && ratingValue) {
+  ratingInput.addEventListener('input', (e) => {
+    ratingValue.textContent = e.target.value;
+  });
+}
