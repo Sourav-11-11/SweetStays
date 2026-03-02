@@ -14,13 +14,9 @@
     <body>
         <%- include("../includes/navbar") %>
         
+        <br>
         <div class="container">
-            <% if (typeof error !== 'undefined') { %>
-                <div class="alert alert-danger mt-4" role="alert">
-                    <h4 class="alert-heading">Error <%= error.statusCode %></h4>
-                    <p><%= error.message %></p>
-                </div>
-            <% } %>
+            <%- include("../includes/flash") %>
             <%- body %>
         </div>
 

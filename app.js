@@ -5,9 +5,16 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
+const session = require("express-session");
+const flash = require("connect-flash");
 
-const listingRoutes = require("./routes/listing.js");
-const reviewRoutes = require("./routes/review.js");
+const listingRouter = require("./routes/listing.js");
+const reviewRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
+
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const User = require("./models/user.js");
 
 const MONGO_URL= "mongodb://localhost:27017/sweetstays";
 
@@ -31,12 +38,54 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 
 
+const sessionOptions = {
+    secret: "mysupersecretkey",
+    resave: false,
+    saveUninitialized: true,
+    cookie:{
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+        httpOnly: true
+    }
+};
+
+
 app.get("/", (req, res) => {
     res.send("Hi, I am root");
 });
 
-app.use("/listings", listingRoutes);
-app.use("/listings/:id/reviews", reviewRoutes);
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+app.use(passport.authenticate("session"));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.currentUser = req.user;
+    next();
+});
+
+// app.get("/demouser", async (req, res) => {
+//     const fakeuser = new User({ 
+//         email: "demo@example.com",
+//         username: "demouser"
+//      });
+
+//      const registeredUser = await User.register(fakeuser, "password123");
+//      res.send("Demo user created");
+// });
+
+//routes 
+app.use("/listings", listingRouter);
+app.use("/listings/:id/reviews", reviewRouter);
+app.use("/", userRouter);
 
 
 app.use((req, res, next) => {
