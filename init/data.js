@@ -6,6 +6,7 @@ const sampleListings = [
     price: 1500,
     location: "Malibu",
     country: "United States",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Modern Loft in Downtown",
@@ -14,6 +15,7 @@ const sampleListings = [
     price: 1200,
     location: "New York City",
     country: "United States",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Mountain Retreat",
@@ -22,6 +24,7 @@ const sampleListings = [
     price: 1000,
     location: "Aspen",
     country: "United States",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Historic Villa in Tuscany",
@@ -30,6 +33,7 @@ const sampleListings = [
     price: 2500,
     location: "Florence",
     country: "Italy",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Secluded Treehouse Getaway",
@@ -38,6 +42,7 @@ const sampleListings = [
     price: 800,
     location: "Portland",
     country: "United States",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Beachfront Paradise",
@@ -46,6 +51,7 @@ const sampleListings = [
     price: 2000,
     location: "Cancun",
     country: "Mexico",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Rustic Cabin by the Lake",
@@ -54,6 +60,7 @@ const sampleListings = [
     price: 900,
     location: "Lake Tahoe",
     country: "United States",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Luxury Penthouse",
@@ -62,6 +69,7 @@ const sampleListings = [
     price: 3500,
     location: "Los Angeles",
     country: "United States",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Ski Chalet",
@@ -70,6 +78,7 @@ const sampleListings = [
     price: 3000,
     location: "Verbier",
     country: "Switzerland",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Safari Lodge",
@@ -78,6 +87,7 @@ const sampleListings = [
     price: 4000,
     location: "Serengeti",
     country: "Tanzania",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Historic Canal House",
@@ -86,6 +96,7 @@ const sampleListings = [
     price: 1800,
     location: "Amsterdam",
     country: "Netherlands",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Private Island Retreat",
@@ -94,6 +105,7 @@ const sampleListings = [
     price: 10000,
     location: "Fiji",
     country: "Fiji",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Cotswolds Cottage",
@@ -102,6 +114,7 @@ const sampleListings = [
     price: 1200,
     location: "Cotswolds",
     country: "United Kingdom",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Boston Brownstone",
@@ -110,6 +123,7 @@ const sampleListings = [
     price: 2200,
     location: "Boston",
     country: "United States",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Bali Bungalow",
@@ -118,6 +132,7 @@ const sampleListings = [
     price: 1800,
     location: "Bali",
     country: "Indonesia",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Banff Cabin",
@@ -126,6 +141,7 @@ const sampleListings = [
     price: 1500,
     location: "Banff",
     country: "Canada",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Miami Art Deco Apartment",
@@ -134,6 +150,7 @@ const sampleListings = [
     price: 1600,
     location: "Miami",
     country: "United States",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Phuket Villa",
@@ -142,6 +159,7 @@ const sampleListings = [
     price: 3000,
     location: "Phuket",
     country: "Thailand",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Scottish Castle",
@@ -150,6 +168,7 @@ const sampleListings = [
     price: 4000,
     location: "Scottish Highlands",
     country: "United Kingdom",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Dubai Desert Oasis",
@@ -158,6 +177,7 @@ const sampleListings = [
     price: 5000,
     location: "Dubai",
     country: "UAE",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Montana Log Cabin",
@@ -166,6 +186,7 @@ const sampleListings = [
     price: 1100,
     location: "Montana",
     country: "United States",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Greek Beach Villa",
@@ -174,6 +195,7 @@ const sampleListings = [
     price: 2500,
     location: "Mykonos",
     country: "Greece",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Eco Treehouse",
@@ -182,6 +204,7 @@ const sampleListings = [
     price: 750,
     location: "Costa Rica",
     country: "Costa Rica",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Charleston Cottage",
@@ -190,6 +213,7 @@ const sampleListings = [
     price: 1600,
     location: "Charleston",
     country: "United States",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Tokyo Apartment",
@@ -198,6 +222,7 @@ const sampleListings = [
     price: 2000,
     location: "Tokyo",
     country: "Japan",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "New Hampshire Cabin",
@@ -206,6 +231,7 @@ const sampleListings = [
     price: 1200,
     location: "New Hampshire",
     country: "United States",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Maldives Villa",
@@ -214,6 +240,7 @@ const sampleListings = [
     price: 6000,
     location: "Maldives",
     country: "Maldives",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Aspen Ski Chalet",
@@ -222,6 +249,7 @@ const sampleListings = [
     price: 4000,
     location: "Aspen",
     country: "United States",
+    owner: "69a5fc12c7f8a4b888100726",
   },
   {
     title: "Costa Rica Beach House",
@@ -230,7 +258,475 @@ const sampleListings = [
     price: 1800,
     location: "Costa Rica",
     country: "Costa Rica",
+    owner: "69a5fc12c7f8a4b888100726",
   },
 ];
 
-module.exports = { data: sampleListings };
+const sampleReviews = [
+  // Cozy Beachfront Cottage
+  {
+    comment: "Amazing views and very peaceful! The cottage is perfect for a romantic getaway.",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Good experience overall. The beach is just steps away!",
+    rating: 4,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Loved every moment here. Highly recommended!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  // Modern Loft in Downtown
+  {
+    comment: "Perfect location in the heart of the city. Very modern and clean.",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Great loft, but a bit noisy due to city traffic.",
+    rating: 3,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Awesome stay! Would definitely book again.",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  // Mountain Retreat
+  {
+    comment: "Such a serene place to unwind. Nature at its best!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Perfect for a peaceful weekend away from the city.",
+    rating: 4,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Beautiful cabin with stunning mountain views!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  // Historic Villa in Tuscany
+  {
+    comment: "A taste of Italian luxury! Absolutely enchanting.",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Wonderful experience staying in a historic villa.",
+    rating: 4,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Living the Tuscan dream! Highly recommended.",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  // Secluded Treehouse Getaway
+  {
+    comment: "Unique and magical! A once-in-a-lifetime experience.",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Amazing treehouse stay! The kids loved it.",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Very cool place, feels like being in nature.",
+    rating: 4,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  // Beachfront Paradise
+  {
+    comment: "Paradise found! Perfect beach vacation spot.",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Stunning beachfront location with excellent amenities.",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Beautiful views and great service!",
+    rating: 4,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  // Rustic Cabin by the Lake
+  {
+    comment: "Peaceful lakefront cabin, perfect for fishing!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Great getaway spot. Very relaxing environment.",
+    rating: 4,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Lovely cabin with beautiful lake views!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  // Luxury Penthouse
+  {
+    comment: "Extraordinary views from this luxury penthouse!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Amazing amenities and panoramic city views.",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Luxury at its finest! Worth every penny.",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  // Ski Chalet
+  {
+    comment: "Perfect ski lodge experience! Very cozy.",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Great location on the slopes with excellent facilities.",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Amazing ski chalet with wonderful views!",
+    rating: 4,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  // Safari Lodge
+  {
+    comment: "Incredible wildlife experience! Unforgettable adventure.",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Luxury safari experience with amazing animals.",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Best safari lodge experience ever!",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  // Historic Canal House
+  {
+    comment: "Charming Amsterdam canal house! Very authentic.",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Beautiful historic building with modern comfort.",
+    rating: 4,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Wonderful Amsterdam experience!",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  // Private Island Retreat
+  {
+    comment: "Once in a lifetime experience! Absolutely heavenly.",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Private island paradise! Dream vacation realized.",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Incredible private island getaway!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  // Cotswolds Cottage
+  {
+    comment: "Charming countryside village experience!",
+    rating: 4,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Perfect romantic getaway in the Cotswolds.",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Beautiful cottage with countryside charm!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  // Boston Brownstone
+  {
+    comment: "Historic brownstone with modern amenities.",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Elegant Boston accommodation!",
+    rating: 4,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Great location in historic Boston!",
+    rating: 4,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  // Bali Bungalow
+  {
+    comment: "Tropical paradise with beachfront access!",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Perfect Bali getaway with pool!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Beautiful Bali experience!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  // Banff Cabin
+  {
+    comment: "Stunning mountain views in Banff!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Perfect cabin retreat in the mountains.",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Great mountain experience in Banff!",
+    rating: 4,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  // Miami Art Deco Apartment
+  {
+    comment: "Glamorous roaring twenties experience!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Beautiful Art Deco style apartment!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Fabulous Miami stay!",
+    rating: 4,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  // Phuket Villa
+  {
+    comment: "Luxurious infinity pool villa in Phuket!",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Amazing luxury villa experience!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Beautiful Phuket villa!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  // Scottish Castle
+  {
+    comment: "Historic castle experience! Absolutely magical.",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Enchanting Scottish castle stay!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Amazing historic castle in Scotland!",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  // Dubai Desert Oasis
+  {
+    comment: "Luxury desert retreat with amazing views!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Incredible desert oasis experience!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Breathtaking Dubai desert experience!",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  // Montana Log Cabin
+  {
+    comment: "Rustic wilderness experience!",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Beautiful Montana log cabin!",
+    rating: 4,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Great cabin retreat in Montana!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  // Greek Beach Villa
+  {
+    comment: "Mediterranean perfection!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Beautiful Greek island villa!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Amazing Mediterranean experience!",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  // Eco Treehouse
+  {
+    comment: "Eco-friendly forest retreat! Very sustainable.",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Wonderful eco-treehouse experience!",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Beautiful and eco-friendly!",
+    rating: 4,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  // Charleston Cottage
+  {
+    comment: "Historic Southern charm!",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Lovely Charleston cottage!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Charming southern hospitality experience!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  // Tokyo Apartment
+  {
+    comment: "Modern Tokyo living experience!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Amazing Tokyo apartment!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Great central Tokyo location!",
+    rating: 4,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  // New Hampshire Cabin
+  {
+    comment: "Scenic lakefront retreat!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Beautiful New Hampshire cabin!",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Perfect lakeside getaway!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  // Maldives Villa
+  {
+    comment: "Overwater paradise! Absolutely stunning.",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Incredible Maldives experience!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Amazing overwater villa!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  // Aspen Ski Chalet
+  {
+    comment: "Luxury ski resort experience!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+  {
+    comment: "Perfect Aspen ski chalet!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Wonderful ski resort stay!",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  // Costa Rica Beach House
+  {
+    comment: "Secluded surf getaway paradise!",
+    rating: 5,
+    author: "69a5fc12c7f8a4b888100726", // vemuru
+  },
+  {
+    comment: "Amazing Costa Rica beach experience!",
+    rating: 5,
+    author: "69a6025a4f25bb561f693ef3", // demo
+  },
+  {
+    comment: "Perfect Costa Rican beach house!",
+    rating: 5,
+    author: "69a8175fb7df0aebb8b9b26e", // KIvee
+  },
+];
+
+module.exports = { data: sampleListings, reviews: sampleReviews };
