@@ -3,8 +3,7 @@ const initData = require('./data.js');
 const Listing = require("../models/listing.js");
 const Review = require("../models/review.js");
 
-const MONGO_URL= "mongodb://localhost:27017/sweetstays";
-
+const MONGO_URL= process.env.ATLAS_URL;
 
 main()
     .then(() => {
