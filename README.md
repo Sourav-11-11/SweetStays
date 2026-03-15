@@ -157,7 +157,7 @@ Passport.js manages login state via `passport-local-mongoose`. All mutating rout
 
 | Listings Feed | Single Listing + Map |
 |---|---|
-| ![index](public/images/Index.png) | ![show](public/images/Show.png) |
+| ![index](public/images/Index.png) | ![show](public/images/show.png) |
 
 | Add Listing | Reviews |
 |---|---|
