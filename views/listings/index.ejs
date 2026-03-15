@@ -1,31 +1,100 @@
 <% layout("/layouts/boilerplate") %> 
-<body>
-  <br/>
-  <h3 >All Listings</h3> <br/>
-  <!-- <form method="GET" action="/listings/new">
-    <button>Create New Listing</button>
-  </form> -->
+<div class="listings-page">
+<section class="filters-section">
+  <div id="filters" class="filters-wrap">
+    <a class="filter <%= activeFilter === 'all' ? 'active' : '' %>" href="/listings">
+      <div><i class="fa-solid fa-border-all"></i></div>
+      <p>All</p>
+    </a>
+
+    <a class="filter <%= activeFilter === 'trending' ? 'active' : '' %>" href="/listings?filter=trending">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Trending</p>
+    </a>
+
+    <a class="filter <%= activeFilter === 'top-rated' ? 'active' : '' %>" href="/listings?filter=top-rated">
+      <div><i class="fa-solid fa-star"></i></div>
+      <p>Top Rated</p>
+    </a>
+
+    <a class="filter <%= activeFilter === 'budget' ? 'active' : '' %>" href="/listings?filter=budget">
+      <div><i class="fa-solid fa-dollar-sign"></i></div>
+      <p>Budget</p>
+    </a>
+
+    <a class="filter <%= activeFilter === 'mountains' ? 'active' : '' %>" href="/listings?filter=mountains">
+      <div><i class="fa-solid fa-mountain"></i></div>
+      <p>Mountains</p>
+    </a>
+
+    <a class="filter <%= activeFilter === 'nature' ? 'active' : '' %>" href="/listings?filter=nature">
+      <div><i class="fa-solid fa-tree"></i></div>
+      <p>Nature</p>
+    </a>
+
+    <a class="filter <%= activeFilter === 'camping' ? 'active' : '' %>" href="/listings?filter=camping">
+      <div><i class="fa-solid fa-campground"></i></div>
+      <p>Camping</p>
+    </a>
+
+    <a class="filter <%= activeFilter === 'beachs' ? 'active' : '' %>" href="/listings?filter=beachs">
+      <div><i class="fa-solid fa-person-swimming"></i></div>
+      <p>Beachs</p>
+    </a>
+  </div>
+
+
+</section>
+
+<div class="tax-toggle-wrapper">
+  <button id="taxToggle" class="tax-toggle-btn" title="Toggle GST display">
+    <i class="fa-solid fa-tag"></i> Show Tax
+  </button>
+</div>
+
 <div class="row-cols-lg-4 row-cols-md-2 row-cols-sm-1 row g-4">
   <% for(let listing of allListings) { %>
     <a href="/listings/<%= listing._id %>" class="listing-link">
-      <div class="card col h-100 listing-card" >
-        <img src="<%= listing.image %>" class="card-img-top" alt="listing image" style="height: 20rem; object-fit: cover;" loading="lazy" decoding="async">
+      <div class="card col h-100 listing-card">
+        <img src="<%= listing.image.url %>" class="card-img-top" alt="listing image" loading="lazy" decoding="async">
         
-        <div class="card-img-overlay">
-            <h5 class="card-title"><%= listing.title %></h5>
-        </div>
-
-        <div class="card-body">
-          <p class="card-text">
-            <b><%= listing.title %></b><br>
-            <%= listing.description %><br/>
-            &#8377; <%= listing.price.toLocaleString("en-IN") %> / night
-          </p>
+        <div class="card-body-info">
+          <h6 class="card-title-clean"><%= listing.title %></h6>
+          <div class="price-gst-row">
+            <div class="price-section">
+              <span class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %></span>
+              <span class="price-label">/night</span>
+            </div>
+            <span class="gst-section hidden"><span class="gst-text">+18% GST</span></span>
+          </div>
         </div>
       </div>
     </a>
   <% } %>
 </div>
-<br>
 
-</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const taxToggle = document.getElementById('taxToggle');
+    let showGST = false;
+
+    // Load preference from localStorage
+    if (localStorage.getItem('showGST') === 'true') {
+      showGST = true;
+      taxToggle.classList.add('active');
+      document.querySelectorAll('.gst-section').forEach(el => el.classList.remove('hidden'));
+    }
+
+    taxToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      showGST = !showGST;
+      localStorage.setItem('showGST', showGST);
+      
+      taxToggle.classList.toggle('active');
+      document.querySelectorAll('.gst-section').forEach(el => {
+        el.classList.toggle('hidden');
+      });
+    });
+  });
+</script>
+</div>

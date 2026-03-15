@@ -1,8 +1,50 @@
 const Listing = require("../models/listing.js");
+const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
+const ExpressError = require("../utils/ExpressError.js");
+const mapboxToken = process.env.MAPBOX_TOKEN;
+const geocoder = mbxGeocoding({ accessToken: mapboxToken });
+
+const FILTER_OPTIONS = [
+  "trending",
+  "locations",
+  "top-rated",
+  "budget",
+  "mountains",
+  "nature",
+  "camping",
+  "beachs"
+];
 
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({}).select("title description price image _id").lean();
-  res.render("listings/index", { allListings });
+  const requestedFilter = req.query.filter || "all";
+  const selectedLocation = (req.query.location || "").trim();
+  let activeFilter = requestedFilter;
+  const query = {};
+
+  if (requestedFilter === "locations") {
+    if (selectedLocation) {
+      query.location = selectedLocation;
+    }
+  } else if (requestedFilter !== "all" && FILTER_OPTIONS.includes(requestedFilter)) {
+    query.category = requestedFilter;
+  } else {
+    activeFilter = "all";
+  }
+
+  const [allListings, availableLocations] = await Promise.all([
+    Listing.find(query).select("title description price image _id category location").lean(),
+    Listing.distinct("location")
+  ]);
+
+  availableLocations.sort((a, b) => a.localeCompare(b));
+
+  res.render("listings/index", {
+    allListings,
+    activeFilter,
+    availableLocations,
+    selectedLocation,
+    showTax: false
+  });
 };
 
 module.exports.renderNewForm = (req, res) => {
@@ -27,7 +69,26 @@ module.exports.show = async (req, res, next) => {
 };
 
 module.exports.create = async (req, res, next) => {
-  const newListing = new Listing(req.body.listing);
+  const geoData = await geocoder.forwardGeocode({
+    query: req.body.listing.location,
+    limit: 1
+  }).send();
+
+  if (!geoData.body.features.length) {
+    throw new ExpressError("Please enter a valid location", 400);
+  }
+
+  let url = "https://images.unsplash.com/photo-1625505826533-5c80aca7d157?auto=format&fit=crop&w=800&q=60";
+  let filename = "default-listing-image";
+  if (req.file) {
+    url = req.file.path;
+    filename = req.file.filename;
+  }
+  const newListing = new Listing({
+    ...req.body.listing,
+    image: { url, filename },
+    geometry: geoData.body.features[0].geometry
+  });
   console.log("New listing data:", newListing);
   newListing.owner = req.user._id;
   await newListing.save();
@@ -37,11 +98,41 @@ module.exports.create = async (req, res, next) => {
 
 module.exports.renderEditForm = async (req, res) => {
   const listing = req.listing;
-  res.render("listings/edit", { listing });
+  
+  let originalImageUrl = listing.image.url;
+  originalImageUrl = originalImageUrl.replace(/\/upload\//, "/upload/h_300,w_250/"); // Resize to width 300px
+  res.render("listings/edit", { listing , originalImageUrl});
 };
 
 module.exports.update = async (req, res, next) => {
-  const updatedListing = await Listing.findByIdAndUpdate(req.params.id, { ...req.body.listing });
+  let image = undefined;
+  if (req.file) {
+    image = {
+      url: req.file.path,
+      filename: req.file.filename
+    };
+  }
+
+  const updateData = { ...req.body.listing };
+
+  if (updateData.location) {
+    const geoData = await geocoder.forwardGeocode({
+      query: updateData.location,
+      limit: 1
+    }).send();
+
+    if (!geoData.body.features.length) {
+      throw new ExpressError("Please enter a valid location", 400);
+    }
+
+    updateData.geometry = geoData.body.features[0].geometry;
+  }
+
+  if (image) {
+    updateData.image = image;
+  }
+
+  const updatedListing = await Listing.findByIdAndUpdate(req.params.id, updateData);
   req.flash("success", "Successfully updated the listing!");
   res.redirect(`/listings/${req.params.id}`);
 };

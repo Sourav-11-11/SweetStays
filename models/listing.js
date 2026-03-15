@@ -8,19 +8,34 @@ const listingSchema = new mongoose.Schema({
         required: true
     },
     description: String,
-     image: {
-  type: String,
-  default: "https://images.unsplash.com/photo-1625505826533-5c80aca7d157?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGdvYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-  set: (v) => {
-    if (!v || v.trim() === "") {
-      return "https://images.unsplash.com/photo-1625505826533-5c80aca7d157?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGdvYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60";
-    }
-    return v;
-  }
-},
+     
+    image: {
+        url: String,
+        filename: String,
+    },
+
     price: Number,
     location: String, 
     country: String,
+    category: {
+        type: String,
+        enum: [
+            "trending",
+            "rooms",
+            "locations",
+            "top-rated",
+            "budget",
+            "mountains",
+            "nature",
+            "camping",
+            "city",
+            "beachs",
+            "cabins",
+            "unique-stays"
+        ],
+        default: "trending"
+    },
+   
     reviews: [
         {
             type: Schema.Types.ObjectId,
@@ -30,6 +45,17 @@ const listingSchema = new mongoose.Schema({
     owner: {
         type: Schema.Types.ObjectId,
         ref: "User"
+    },
+    geometry: {
+        type: {
+            type: String, 
+            enum: ['Point'],
+            default: 'Point'
+        },
+        coordinates: {
+            type: [Number],
+            default: [78.4772, 17.4065]
+        }
     }
 });
 

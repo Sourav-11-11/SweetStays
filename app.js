@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== "production"){
+    require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -6,7 +10,9 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
+const MongoStore = require("connect-mongo").default;
 const flash = require("connect-flash");
+
 
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
@@ -16,7 +22,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/user.js");
 
-const MONGO_URL= "mongodb://localhost:27017/sweetstays";
+const MONGO_URL = process.env.ATLAS_URL ;
 
 main()
     .then(() => {
@@ -38,8 +44,21 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 
 
+const sessionstore = MongoStore.create({
+    mongoUrl: MONGO_URL,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: process.env.SECRET_KEY
+    }
+});
+
+sessionstore.on("error", (error) => {
+    console.log("Session store error:", error);
+});
+
 const sessionOptions = {
-    secret: "mysupersecretkey",
+    sessionstore,
+    secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: true,
     cookie:{
@@ -50,11 +69,13 @@ const sessionOptions = {
 };
 
 
-app.get("/", (req, res) => {
-    res.send("Hi, I am root");
-});
+// app.get("/", (req, res) => {
+//     res.send("Hi, I am root");
+// });
+
 
 app.use(session(sessionOptions));
+
 app.use(flash());
 
 app.use(passport.initialize());
@@ -94,6 +115,7 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   if (res.headersSent) return next(err); 
+    console.error("[Express Error]", err);
   const statusCode = err.statusCode || 500;
   const message = err.message || "Something went wrong";
   res.status(statusCode).render("error", { statusCode, message });

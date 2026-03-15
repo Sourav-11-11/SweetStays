@@ -1,9 +1,18 @@
 <% layout("/layouts/boilerplate") %>
+<script>
+  const mapToken = "<%= process.env.MAPBOX_TOKEN %>";
+</script>
+<script id="listing-map-data" type="application/json"><%- JSON.stringify({
+  title: listing.title,
+  location: listing.location,
+  country: listing.country,
+  geometry: listing.geometry
+}) %></script>
 <div class="row mt-3">
   <div class="col-8 offset-2">
     <h3 class="mb-4"><%= listing.title %></h3>
     <div class="card listing-card mb-4">
-      <img src="<%= listing.image %>" class="card-img-top show-img" alt="listing image" >
+      <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing image" >
       <div class="card-body p-4">
         <p class="card-text mb-3"><strong>Hosted by:</strong> <%= listing.owner.username %></p>
         <p class="card-text mb-3"><strong>Description:</strong> <%= listing.description %></p>
@@ -100,7 +109,16 @@
           </div>
         <% } %>
       </div>
+      
+    </div>
 
+  </div>
+  <div class="col-6 offset-2 mb-3">
+    <h3 class="mb-4">Where you'll be staying</h3>
+    <div id="map" class="map-box">
     </div>
   </div>
 </div>
+
+<script src="/js/map.js"></script>
+
