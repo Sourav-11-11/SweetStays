@@ -42,7 +42,7 @@
 ---
 
 ## 🛠️ Tech Stack
-```
+
 
 **Backend**
 Node.js + Express.js — RESTful routing with MVC structure
@@ -59,7 +59,7 @@ Custom CSS — branded navbar, search pill, card hover effects, sticky footer
 Mapbox GL JS — interactive maps + Mapbox Geocoding API for coordinates
 Cloudinary + Multer — cloud image upload pipeline
 method-override — enables PUT/DELETE from HTML forms
-```
+
 
 ---
 
@@ -157,13 +157,12 @@ Passport.js manages login state via `passport-local-mongoose`. All mutating rout
 
 | Listings Feed | Single Listing + Map |
 |---|---|
-| ![index](#) | ![show](#) |
+| ![index](images/Index.png) | ![show](images/Show.png) |
 
-| Mobile Search | Reviews |
+| Add Listing | Reviews |
 |---|---|
-| ![mobile](#) | ![reviews](#) |
+| ![create](images/Create.png) | ![reviews](images/Review.png) |
 
-> *Replace `#` with actual screenshot paths after adding images to `/public/screenshots/`*
 
 ---
 
@@ -190,7 +189,7 @@ Passport.js manages login state via `passport-local-mongoose`. All mutating rout
 
 ## 📄 License
 
-MIT © [Your Name](https://github.com/yourusername)
+MIT © Vemuru Sourav(https://github.com/Sourav-11-11)
 
 ---
 
