@@ -1,6 +1,6 @@
 <% layout("/layouts/boilerplate") %>
 <script>
-  const mapToken = "<%= process.env.MAPBOX_TOKEN %>";
+  window.mapToken = "<%= process.env.MAPBOX_TOKEN %>";
 </script>
 <script id="listing-map-data" type="application/json"><%- JSON.stringify({
   title: listing.title,

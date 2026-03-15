@@ -1,6 +1,7 @@
 const mapContainer = document.getElementById("map");
 const mapDataScript = document.getElementById("listing-map-data");
 const listingMapData = mapDataScript ? JSON.parse(mapDataScript.textContent) : null;
+const mapToken = window.mapToken;
 
 if (mapContainer && mapToken && listingMapData?.geometry?.coordinates?.length === 2) {
     mapboxgl.accessToken = mapToken;
