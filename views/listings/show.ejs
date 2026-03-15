@@ -14,13 +14,13 @@
     <div class="card listing-card mb-4">
       <img src="<%= listing.image.url %>" class="card-img-top show-img" alt="listing image" >
       <div class="card-body p-4">
-        <p class="card-text mb-3"><strong>Hosted by:</strong> <%= listing.owner.username %></p>
+        <p class="card-text mb-3"><strong>Hosted by:</strong> <%= listing.owner ? listing.owner.username : 'Unknown Host' %></p>
         <p class="card-text mb-3"><strong>Description:</strong> <%= listing.description %></p>
         <p class="card-text mb-3"><strong>Price:</strong> &#8377; <%= listing.price.toLocaleString("en-IN") %> / night</p>
         <p class="card-text mb-3"><strong>Location:</strong> <%= listing.location %></p>
         <p class="card-text mb-4"><strong>Country:</strong> <%= listing.country %></p>
         
-        <% if (currentUser && currentUser._id.equals(listing.owner._id)) { %>
+        <% if (currentUser && listing.owner && currentUser._id.equals(listing.owner._id)) { %>
            <span class="badge bg-success mb-3">Your Listing - Owned by <%= listing.owner.username %></span>  
         <div class="d-flex gap-2">
           <a href="/listings/<%= listing._id %>/edit" class="btn btn-primary">Edit</a>
@@ -81,15 +81,15 @@
                   <div class="card-body p-4">
                     <div class="d-flex align-items-center mb-3">
                       <div class="rounded-circle bg-dark text-white d-flex align-items-center justify-content-center me-3" style="width: 45px; height: 45px; font-size: 1.1rem; font-weight: 600;">
-                        <%= review.author.username.charAt(0).toUpperCase() %>
+                        <%= review.author ? review.author.username.charAt(0).toUpperCase() : "?" %>
                       </div>
                       <div class="flex-grow-1">
-                        <h6 class="mb-0 fw-semibold"><%= review.author.username %></h6>
+                        <h6 class="mb-0 fw-semibold"><%= review.author ? review.author.username : "Anonymous User" %></h6>
                         <% if (review.createdAt) { %>
                           <small class="text-muted"><%= new Date(review.createdAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) %></small>
                         <% } %>
                       </div>
-                      <% if (currentUser && currentUser._id.equals(review.author._id)) { %>
+                      <% if (currentUser && review.author && currentUser._id.equals(review.author._id)) { %>
                         <form method="POST" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE" style="display:inline;">
                           <button type="submit" class="btn btn-sm btn-outline-danger rounded-pill px-3">Delete</button>
                         </form>
@@ -112,10 +112,10 @@
       
     </div>
 
-  </div>
-  <div class="col-6 offset-2 mb-3">
+    <!-- Map Section -->
+    <hr class="my-4">
     <h3 class="mb-4">Where you'll be staying</h3>
-    <div id="map" class="map-box">
+    <div id="map" class="map-box mb-4">
     </div>
   </div>
 </div>
