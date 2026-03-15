@@ -1,138 +1,201 @@
-# 🏡 SweetStays – Full Stack Travel & Stay Booking Web Application
+<div align="center">
 
-SweetStays is a modern full-stack web application inspired by Airbnb that allows users to explore, list, and book unique stays across different locations.  
-The platform focuses on clean UI, secure authentication, real-time data handling, and a scalable backend architecture.
+# 🧭 Sweet Stays
 
-Built as a hands-on learning project to strengthen real-world development skills in full-stack engineering, database design, and production-level project structure.
+### *A full-stack property rental platform — built from scratch*
+
+[![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Mapbox](https://img.shields.io/badge/Mapbox-000000?style=for-the-badge&logo=mapbox&logoColor=white)](https://www.mapbox.com/)
+[![Cloudinary](https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white)](https://cloudinary.com/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)](https://getbootstrap.com/)
+
+**[Live Demo](#) · [Report Bug](#) · [Request Feature](#)**
+
+</div>
 
 ---
 
-## 🚀 Live Features
+## 🚀 What Is This?
 
-✅ User Authentication & Authorization  
-✅ Create, Edit & Delete Property Listings  
-✅ Image Upload & Listing Management  
-✅ Reviews & Ratings System  
-✅ Interactive Maps Integration  
-✅ Secure Payment Integration (Razorpay)  
-✅ Responsive UI for All Devices  
-✅ RESTful Backend Architecture  
+**Sweet Stays** is an Airbnb-style property listing platform where users can **browse, list, and review stays** across locations. Built end-to-end — authentication, file uploads, interactive maps, reviews, and responsive UI — all without a frontend framework. Every feature is production-wired: cloud image storage, geospatial data, persistent sessions, and full CRUD with authorization guards.
+
+> Built to demonstrate real-world full-stack skills: not a tutorial clone — every architectural and UX decision was made from scratch.
+
+---
+
+## ✨ Features at a Glance
+
+| Area | What's Built |
+|---|---|
+| 🔐 **Auth** | Signup · Login · Logout via Passport.js local strategy with session persistence |
+| 🏠 **Listings** | Full CRUD — create, view, edit, delete with ownership checks |
+| 🗺️ **Maps** | Mapbox GL JS with live geocoding — every listing has a real interactive map |
+| 📸 **Image Upload** | Cloudinary + Multer — drag & drop images stored in the cloud, not on disk |
+| ⭐ **Reviews** | Star ratings + text reviews per listing with author attribution |
+| 🔍 **Search & Filter** | Case-insensitive search by title/location + category filter pills (Trending, Mountains, Beach, Budget...) |
+| 📱 **Responsive UI** | Mobile-first Bootstrap + custom CSS — search pill stacks, hero images resize, navbar adapts |
+| 💬 **Flash Messaging** | UX feedback on every action — login, errors, success states |
+| 🛡️ **Validation** | Joi schema validation server-side + middleware guards on all protected routes |
 
 ---
 
 ## 🛠️ Tech Stack
-
-### 💻 Frontend
-- HTML5
-- CSS3
-- JavaScript
-- Bootstrap
-- EJS Templating
-
-### ⚙️ Backend
-- Node.js
-- Express.js
-- REST APIs
-
-### 🗄️ Database
-- MongoDB
-- Mongoose ODM
-
-### 🔐 Authentication & Security
-- Passport.js
-- Session Authentication
-- Data Validation & Sanitization
-
-### 🌐 Integrations
-- Leaflet.js (Maps)
-- Razorpay (Payments)
-
----
-
-## 📂 Project Structure
-
 ```
-SweetStays/
-│
-├── models/        → Database schemas
-├── routes/        → Express route handlers
-├── views/         → EJS frontend templates
-├── public/        → Static assets (CSS, JS, Images)
-├── utils/         → Helper functions & middleware
-├── app.js         → Main server file
-└── data.js        → Sample database seed data
+
+**Backend**
+Node.js + Express.js — RESTful routing with MVC structure
+MongoDB + Mongoose — document store with geospatial & reference models
+Passport.js — local auth strategy with session-based persistence
+connect-mongo — MongoDB-backed session store (no in-memory sessions)
+
+**Frontend**
+EJS + ejs-mate — server-side templating with reusable layouts
+Bootstrap 5 — responsive grid + components
+Custom CSS — branded navbar, search pill, card hover effects, sticky footer
+
+**Integrations**
+Mapbox GL JS — interactive maps + Mapbox Geocoding API for coordinates
+Cloudinary + Multer — cloud image upload pipeline
+method-override — enables PUT/DELETE from HTML forms
 ```
 
 ---
 
-## ⚡ Installation & Setup
-
-### 1️⃣ Clone Repository
-```bash
-git clone https://github.com/Sourav-11-11/SweetStays.git
+## 📁 Project Structure
 ```
 
-### 2️⃣ Navigate to Project
-```bash
-cd SweetStays
+sweet-stays/
+├── controllers/          # Business logic (listings, users, reviews)
+│   ├── listings.js       # CRUD + search/filter + geocode + Cloudinary
+│   ├── users.js          # Signup, login, logout
+│   └── reviews.js        # Create, delete reviews
+├── routes/               # Express routers
+│   ├── listing.js        # /listings — all listing routes
+│   ├── user.js           # /signup, /login, /logout
+│   └── review.js         # /listings/:id/reviews
+├── models/               # Mongoose schemas
+│   ├── listing.js        # Title, price, location, geometry, owner, reviews
+│   ├── user.js           # Passport-local-mongoose user
+│   └── review.js         # Rating, comment, author, timestamps
+├── views/                # EJS templates
+│   ├── layouts/          # boilerplate.ejs (base layout)
+│   ├── listings/         # index, show, new, edit
+│   ├── users/            # login, signup
+│   └── includes/         # navbar, footer, flash
+├── public/               # Static assets
+│   ├── css/style.css     # All custom styles
+│   └── js/map.js         # Mapbox init + marker + popup
+├── middleware.js          # isLoggedIn, isOwner, validateListing, checkExists
+├── schema.js             # Joi validation schemas
+├── cloudConfig.js        # Cloudinary + multer storage config
+├── utils/
+│   ├── ExpressError.js   # Custom error class
+│   └── WrapAsync.js      # Async error forwarding wrapper
+├── init/                 # DB seed data with real geometry
+└── app.js                # Server bootstrap, middleware, route mounting
 ```
 
-### 3️⃣ Install Dependencies
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+- Node.js v18+
+- MongoDB Atlas account (or local MongoDB)
+- Mapbox account (free tier works)
+- Cloudinary account (free tier works)
+
+### Installation
 ```bash
+# 1. Clone the repo
+git clone https://github.com/yourusername/sweet-stays.git
+cd sweet-stays
+
+# 2. Install dependencies
 npm install
+
+# 3. Set up environment variables
+cp .env.example .env
+# Fill in your keys (see below)
+
+# 4. Seed the database (optional)
+node init/index.js
+
+# 5. Start the server
+node app.js
+# → http://localhost:8080
 ```
 
-### 4️⃣ Setup Environment Variables
-Create a `.env` file and add:
-
-```
-MONGO_URL=your_mongodb_connection_string
-SESSION_SECRET=your_secret_key
-RAZORPAY_KEY=your_payment_key
-```
-
-### 5️⃣ Run Server
-```bash
-nodemon app.js
-```
-
-Server runs on:
-```
-http://localhost:8080
+### Environment Variables
+```env
+ATLAS_URL=your_mongodb_connection_string
+SECRET_KEY=your_session_secret
+MAPBOX_TOKEN=your_mapbox_public_token
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_KEY=your_api_key
+CLOUDINARY_SECRET=your_api_secret
 ```
 
 ---
 
-## 🎯 Key Learning Outcomes
+## 🗺️ How Key Features Work
 
-- Designed a scalable MVC architecture
-- Built secure authentication systems
-- Implemented RESTful API design
-- Managed real database relationships
-- Integrated third-party APIs & payment gateways
-- Developed a production-style full-stack project
+**Geocoding Pipeline**
+When a listing is created or updated, the location string is sent to the Mapbox Geocoding API → coordinates are stored as GeoJSON geometry in MongoDB → `map.js` reads this geometry on the show page and renders an interactive Mapbox GL JS map with a marker and popup.
 
----
+**Image Upload Pipeline**
+Form submits with `multipart/form-data` → `multer` intercepts the file → `multer-storage-cloudinary` streams it directly to Cloudinary → the returned URL and filename are saved to the listing document. No files ever touch the server disk.
 
-## 👨‍💻 Author
-
-**Sourav Vemuru**  
-Full Stack Developer | Computer Science Student  
-
-🔗 GitHub: https://github.com/Sourav-11-11  
+**Auth & Authorization**
+Passport.js manages login state via `passport-local-mongoose`. All mutating routes are guarded by `isLoggedIn` (session check). Edit/Delete routes additionally check `isOwner` (comparing `listing.owner` to `req.user._id`). Unauthorized access is rejected with a flash message and redirect.
 
 ---
 
-## ⭐ Future Improvements
+## 📸 Screenshots
 
-- Real-time booking system
-- Chat between host & guest
-- Cloud image storage (AWS S3 / Cloudinary)
-- Deployment with Docker
-- Admin Dashboard
+| Listings Feed | Single Listing + Map |
+|---|---|
+| ![index](#) | ![show](#) |
+
+| Mobile Search | Reviews |
+|---|---|
+| ![mobile](#) | ![reviews](#) |
+
+> *Replace `#` with actual screenshot paths after adding images to `/public/screenshots/`*
 
 ---
 
-## 📜 License
+## 🧠 What I Learned Building This
 
-This project is built for educational and portfolio purposes.
+- Architecting a full MVC Express app from zero — no boilerplate, no generators
+- Handling async errors cleanly with a `WrapAsync` HOF and a single error middleware
+- Integrating third-party APIs (Mapbox, Cloudinary) into a full data pipeline
+- Designing authorization logic that's DRY, reusable, and actually secure
+- Making a server-rendered UI feel polished and responsive without React
+
+---
+
+## 🔮 Roadmap
+
+- [ ] Real date availability + booking system
+- [ ] Date/guest filters wired into search queries
+- [ ] CSRF protection + rate limiting on auth routes
+- [ ] Image optimization via Cloudinary transformations
+- [ ] 404 and empty-state UI improvements
+- [ ] Map cluster view for multiple listings
+
+---
+
+## 📄 License
+
+MIT © [Your Name](https://github.com/yourusername)
+
+---
+
+<div align="center">
+
+**If you found this interesting, give it a ⭐ — it helps more than you think.**
+
+</div>
