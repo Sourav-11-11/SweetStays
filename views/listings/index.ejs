@@ -1,7 +1,7 @@
 <% layout("/layouts/boilerplate") %> 
 <div class="listings-page">
 <section class="filters-section">
-  <div id="filters" class="filters-wrap">
+  <div id="filters" class="filters-wrap mb-2">
     <a class="filter <%= activeFilter === 'all' ? 'active' : '' %>" href="/listings">
       <div><i class="fa-solid fa-border-all"></i></div>
       <p>All</p>
@@ -59,7 +59,10 @@
         <img src="<%= listing.image.url %>" class="card-img-top" alt="listing image" loading="lazy" decoding="async">
         
         <div class="card-body-info">
-          <h6 class="card-title-clean"><%= listing.title %></h6>
+          <div class="card-meta-row">
+            <h6 class="card-title-clean mb-0"><%= listing.title %></h6>
+            <span class="card-location"><i class="fa-solid fa-location-dot"></i> <%= listing.location || "" %></span>
+          </div>
           <div class="price-gst-row">
             <div class="price-section">
               <span class="price">&#8377; <%= listing.price.toLocaleString("en-IN") %></span>

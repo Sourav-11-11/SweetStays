@@ -93,6 +93,7 @@ app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     res.locals.currentUser = req.user;
+    res.locals.searchTerm = ""; // default for navbar search input
     next();
 });
 

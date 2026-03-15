@@ -18,21 +18,33 @@ const FILTER_OPTIONS = [
 module.exports.index = async (req, res) => {
   const requestedFilter = req.query.filter || "all";
   const selectedLocation = (req.query.location || "").trim();
+  const searchTerm = (req.query.q || "").trim();
   let activeFilter = requestedFilter;
-  const query = {};
 
+  const queryClauses = [];
+
+  // Match title or location when a search term is provided
+  if (searchTerm) {
+    const regex = new RegExp(searchTerm, "i");
+    queryClauses.push({ $or: [{ title: regex }, { location: regex }] });
+    activeFilter = "all"; // search overrides pill filters for clarity
+  }
+
+  // Category/location filter pills remain compatible with search
   if (requestedFilter === "locations") {
     if (selectedLocation) {
-      query.location = selectedLocation;
+      queryClauses.push({ location: selectedLocation });
     }
   } else if (requestedFilter !== "all" && FILTER_OPTIONS.includes(requestedFilter)) {
-    query.category = requestedFilter;
-  } else {
+    queryClauses.push({ category: requestedFilter });
+  } else if (!searchTerm) {
     activeFilter = "all";
   }
 
+  const mongoQuery = queryClauses.length ? { $and: queryClauses } : {};
+
   const [allListings, availableLocations] = await Promise.all([
-    Listing.find(query).select("title description price image _id category location").lean(),
+    Listing.find(mongoQuery).select("title description price image _id category location").lean(),
     Listing.distinct("location")
   ]);
 
@@ -43,6 +55,7 @@ module.exports.index = async (req, res) => {
     activeFilter,
     availableLocations,
     selectedLocation,
+    searchTerm,
     showTax: false
   });
 };
